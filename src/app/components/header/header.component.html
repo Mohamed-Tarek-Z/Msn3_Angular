@@ -1,0 +1,14 @@
+<mat-toolbar class='toolbar'>
+    <a mat-button routerLink='/home' routerLinkActive='active'><span class="fa fa-home fa-lg"></span> أى حاجة</a>
+    <a mat-button routerLink='/mizan' routerLinkActive='active'><span class="fa fa-info fa-lg"></span> الوزن</a>
+    <a mat-button routerLink='/ezn' routerLinkActive='active'><span class="fa fa-list fa-lg"></span> عمل أذن</a>
+    <a mat-button routerLink="/products" routerLinkActive="active"><span class="fa fa-heart fa-lg"></span> الأصناف</a>
+    <a mat-button routerLink='/stock' routerLinkActive='active'><span class="fa fa-address-card fa-lg"></span>
+        الرصيد</a>
+    <a mat-button routerLink='/ywmya' routerLinkActive='active'><span class="fa fa-address-card fa-lg"></span>
+        اليومية</a>
+    <span class='spacer'></span>
+    <a *ngIf="!username" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> تسجيل الدخول</a>
+    <a *ngIf="username">{{username}}</a>
+    <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> تسجيل الخروج</a>
+</mat-toolbar>
