@@ -33,14 +33,16 @@ export class AuthService {
 
   checkJWTtoken() {
     this.http.get<JWTResponse>(BaseURL + 'users/checkJWTtoken')
-      .subscribe(res => {
-        console.log('JWT Token Valid: ', res);
-        this.sendUsername(res.user.username);
-      },
-        err => {
+      .subscribe({
+        next: (res) => {
+          console.log('JWT Token Valid: ', res.success);
+          this.sendUsername(res.user.username);
+        },
+        error: (err) => {
           console.log('JWT Token invalid: ', err);
           this.destroyUserCredentials();
-        });
+        }
+      });
   }
 
   sendUsername(name: string) {
@@ -54,14 +56,13 @@ export class AuthService {
   loadUserCredentials() {
     if (localStorage.getItem(this.tokenKey) != null) {
       const credentials = JSON.parse(localStorage.getItem(this.tokenKey) || "");
-      console.log('loadUserCredentials ', credentials);
       if (credentials && credentials.username !== undefined) {
         this.useCredentials(credentials);
         if (this.authToken) {
           this.checkJWTtoken();
         }
       }
-    }else{
+    } else {
       console.log('loadUserCredentials no JWT Found');
     }
   }

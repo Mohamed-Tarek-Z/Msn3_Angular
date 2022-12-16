@@ -1,1 +1,30 @@
-<p>products works!</p>
+<div class="propage">
+    <div style="order: 1">
+        <table mat-table [dataSource]="pros">
+            <ng-container matColumnDef="No.">
+                <th mat-header-cell *matHeaderCellDef> مسلسل </th>
+                <td mat-cell *matCellDef="let element"> {{element.v}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> اسم الصنف </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Weight">
+                <th mat-header-cell *matHeaderCellDef> وزن الكونة </th>
+                <td mat-cell *matCellDef="let element"> {{element.wightOfEmptyCone}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Color">
+                <th mat-header-cell *matHeaderCellDef> لون الكونة </th>
+                <td mat-cell *matCellDef="let element"> {{element.colorOfEmptyCone}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <div style="order: 2">
+        <form>
+            <h3>hello</h3>
+        </form>
+    </div>
+</div>

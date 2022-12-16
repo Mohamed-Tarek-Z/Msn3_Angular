@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.authService.loadUserCredentials();
     this.subscription = this.authService.getUsername()
-      .subscribe(name => { console.log(name); this.username = name; });
+      .subscribe(name => { this.username = name; });
   }
 
   ngOnDestroy() {
@@ -30,10 +30,7 @@ export class HeaderComponent implements OnInit {
   openLoginForm() {
     const loginRef = this.dialog.open(LogInComponent, { width: '500px', height: '450px' });
 
-    loginRef.afterClosed()
-      .subscribe(result => {
-        console.log(result);
-      });
+    loginRef.afterClosed();
   }
 
   logOut() {

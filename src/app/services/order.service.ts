@@ -17,7 +17,7 @@ export class OrderService {
     private processHTTPService: ProcessHTTPService) { }
 
   getOrders(): Observable<Order[]> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Order[]>(`${BaseURL}orders`)
@@ -25,7 +25,7 @@ export class OrderService {
   }
 
   createOrder(order: Order): Observable<Order> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.post<Order>(`${BaseURL}orders`, order)
@@ -33,14 +33,14 @@ export class OrderService {
   }
 
   getOrder(ordId: string): Observable<Order> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Order>(`${BaseURL}orders/${ordId}`)
       .pipe(catchError(error => this.processHTTPService.handleError(error)));
   }
   deletOrder(ordId: string) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.delete(`${BaseURL}orders/${ordId}`)
@@ -48,7 +48,7 @@ export class OrderService {
   }
 
   retriveOrderById(ordId: string) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get(`${BaseURL}orders/retrive/${ordId}`)

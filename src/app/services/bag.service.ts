@@ -17,7 +17,7 @@ export class BagService {
     private processHTTPService: ProcessHTTPService) { }
 
   getBags(proid: string): Observable<Bag[]> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Bag[]>(`${BaseURL}bags/?type=${proid}`)
@@ -25,7 +25,7 @@ export class BagService {
   }
 
   addBag(bag: Bag) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null;
     }
     return this.http.post(`${BaseURL}bags`, bag)
@@ -33,7 +33,7 @@ export class BagService {
   }
 
   editBags(ids: number[], lot: string, pallet: number, type: string) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null;
     }
     return this.http.put(`${BaseURL}bags`, { ids: ids, lot: lot, pallet: pallet, type: type })
@@ -41,7 +41,7 @@ export class BagService {
   }
 
   deleteBags(ids: number[]) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null;
     }
     return this.http.delete(`${BaseURL}bags`, { body: ids })
@@ -49,7 +49,7 @@ export class BagService {
   }
 
   getBag(bagid: string): Observable<Bag> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Bag>(`${BaseURL}bags/${bagid}`)
@@ -57,7 +57,7 @@ export class BagService {
   }
 
   editBag(bagid: string, bag: Bag): Observable<Bag> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.post<Bag>(`${BaseURL}bags/${bagid}`, bag)
@@ -65,7 +65,7 @@ export class BagService {
   }
 
   deletBag(bagid: string): Observable<Bag> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.delete<Bag>(`${BaseURL}bags/${bagid}`)

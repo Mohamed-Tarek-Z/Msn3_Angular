@@ -18,7 +18,7 @@ export class ProductService {
     private processHTTPService: ProcessHTTPService) { }
 
   getProducts(): Observable<Product[]> {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Product[]>(`${BaseURL}products`)
@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   addProduct(product: Product) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.post<Product>(`${BaseURL}products`, product)
@@ -34,7 +34,7 @@ export class ProductService {
   }
 
   getProduct(proid: string) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.get<Product>(`${BaseURL}products/${proid}`)
@@ -42,7 +42,7 @@ export class ProductService {
   }
 
   editProduct(proid: string, pro: Product) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.post<Product>(`${BaseURL}products/${proid}`, pro)
@@ -50,7 +50,7 @@ export class ProductService {
   }
 
   deletProduct(proid: string) {
-    if (this.auth.isLoggedIn()) {
+    if (!this.auth.isLoggedIn()) {
       return null!;
     }
     return this.http.delete(`${BaseURL}products/${proid}`)

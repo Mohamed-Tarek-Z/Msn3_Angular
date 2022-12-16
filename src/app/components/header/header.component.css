@@ -1,13 +1,9 @@
-
-.toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
+.navigation {
+    position: relative;
+    height: auto;
     display: flex;
     align-items: center;
-    background-color: lightgray;
+    background-color: var(--divider-color);
     color: black;
     font-weight: 600;
 }
@@ -19,6 +15,15 @@ a:hover {
     text-decoration: none;
 }
 
-.spacer {
-    flex: 1;
+@media all and (max-width: 800px) {
+    .navigation {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .navigation {
+        flex-direction: column;
+        height: auto;
+    }
 }

@@ -11,13 +11,12 @@ export class LogInComponent implements OnInit {
 
   user = { username: '', password: '', remember: false };
   errMess!: string;
-  constructor(public dialogRef: MatDialogRef<LogInComponent>,private authService: AuthService) { }
+  constructor(public dialogRef: MatDialogRef<LogInComponent>, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    console.log('User: ', this.user);
     this.authService.logIn(this.user)
       .subscribe({
         next: (res) => {

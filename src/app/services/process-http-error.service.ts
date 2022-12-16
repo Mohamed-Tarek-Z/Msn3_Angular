@@ -19,6 +19,6 @@ export class ProcessHTTPService {
       errMsg = `${error.status} - ${error.statusText || ''} ${error.message}`;
     }
 
-    return throwError(errMsg);
+    return throwError(() => new Error(errMsg));
   }
 }
