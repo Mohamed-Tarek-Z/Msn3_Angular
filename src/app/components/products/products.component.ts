@@ -11,7 +11,8 @@ export class ProductsComponent implements OnInit {
 
   pros!: Product[];
   errMess!: string;
-  displayedColumns: string[] = ['No.', 'Name', 'Weight', 'Color'];
+  displayedColumns: string[] = ['Num', 'Name', 'Weight', 'Color'];
+  clickedRows = new Set<Product>();
   constructor(private proService: ProductService) { }
 
   ngOnInit(): void {

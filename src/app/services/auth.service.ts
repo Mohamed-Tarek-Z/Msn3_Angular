@@ -68,7 +68,6 @@ export class AuthService {
   }
 
   storeUserCredentials(credentials: any) {
-    console.log('storeUserCredentials ', credentials);
     localStorage.setItem(this.tokenKey, JSON.stringify(credentials));
     this.useCredentials(credentials);
   }
@@ -86,9 +85,14 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
   }
 
-  signUp(username: string, password: string) {
-    return this.http.post(`${BaseURL}users/signup`, { 'username': username, 'password': password })
-      .pipe(catchError(error => this.processHTTPService.handleError(error)));
+  signUp(user: any) {
+    return this.http.post<AuthResponse>(`${BaseURL}users/signup`,
+      { 'username': user.username, 'password': user.password })
+      .pipe(map(res => {
+        this.storeUserCredentials({ username: user.username, token: res.token });
+        return { 'success': true, 'username': user.username };
+      }),
+        catchError(error => this.processHTTPService.handleError(error)));
   }
 
   logIn(user: any): Observable<any> {
