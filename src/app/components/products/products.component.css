@@ -3,3 +3,8 @@
     align-items: center;
     justify-content: space-around;
 }
+
+h1 {
+    margin-left: 50%;
+    margin-bottom: 5%;
+}

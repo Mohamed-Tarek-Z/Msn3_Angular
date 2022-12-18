@@ -1,6 +1,6 @@
 import { Product } from './product';
 export interface Bag {
-    _id: string;
+    _id?: string;
     type: Product;
     lot: string;
     pallet: number;

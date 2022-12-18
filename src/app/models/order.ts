@@ -1,7 +1,7 @@
 import { Product }from './product';
 import { Bag }from './bag';
 export interface Order {
-    _id:string;
+    _id?:string;
     clientName: string;
     type: Product;
     lot: string;

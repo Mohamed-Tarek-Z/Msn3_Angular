@@ -11,8 +11,7 @@ export class ProductsComponent implements OnInit {
 
   pros!: Product[];
   errMess!: string;
-  displayedColumns: string[] = ['Num', 'Name', 'Weight', 'Color'];
-  clickedRows = new Set<Product>();
+
   constructor(private proService: ProductService) { }
 
   ngOnInit(): void {
@@ -24,5 +23,16 @@ export class ProductsComponent implements OnInit {
         this.errMess = <any>errmess;
       }
     });
+  }
+
+  onSubmit(pro: unknown) {
+    this.proService.addProduct(pro as Product).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (errmess) => {
+        this.errMess = <any>errmess;
+      }
+    })
   }
 }

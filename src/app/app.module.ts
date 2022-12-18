@@ -15,6 +15,9 @@ import { EmptyComponent } from './components/empty/empty.component';
 import { YwmyaComponent } from './components/ywmya/ywmya.component';
 import { StockComponent } from './components/stock/stock.component';
 
+import { ProTableComponent } from './components/products/pro-table/pro-table.component';
+import { ProFormComponent } from './components/products/pro-form/pro-form.component';
+
 import { AuthInterceptor, UnauthorizedInterceptor } from './services/auth.interceptor';
 
 import { MatCardModule } from '@angular/material/card';
@@ -27,8 +30,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+
+
+import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,11 @@ import { MatTableModule } from '@angular/material/table';
     EznComponent,
     EmptyComponent,
     YwmyaComponent,
-    StockComponent
+    StockComponent,
+    ProTableComponent,
+    ProFormComponent,
+    LoginPageComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +71,7 @@ import { MatTableModule } from '@angular/material/table';
     MatGridListModule,
 
     FormsModule,
+
     AppRoutingModule
   ],
   providers: [
