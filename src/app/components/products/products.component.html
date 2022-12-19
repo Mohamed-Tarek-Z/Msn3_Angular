@@ -1,10 +1,11 @@
 <h1>ألاصناف</h1>
 <div class="propage">
     <div style="order: 1">
-        <app-pro-table [pros]="pros"></app-pro-table>
+        <app-pro-table (emmiter)="onTableClick($event)" [pros]=" pros"></app-pro-table>
     </div>
     <div style="order: 2">
-        <app-pro-form (proem)="onSubmit($event)"></app-pro-form>
+        <app-pro-form (emmiter)="onProAdd($event)" [pro]="(ind > -1)? pros[ind] : {
+            name: '', wightOfEmptyCone: 0.0, colorOfEmptyCone: ''} "></app-pro-form>
     </div>
 </div>
 

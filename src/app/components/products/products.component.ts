@@ -11,6 +11,7 @@ export class ProductsComponent implements OnInit {
 
   pros!: Product[];
   errMess!: string;
+  ind!: number;
 
   constructor(private proService: ProductService) { }
 
@@ -23,16 +24,32 @@ export class ProductsComponent implements OnInit {
         this.errMess = <any>errmess;
       }
     });
+    this.ind = -1;
   }
 
-  onSubmit(pro: unknown) {
-    this.proService.addProduct(pro as Product).subscribe({
-      next: () => {
-        location.reload();
-      },
-      error: (errmess) => {
-        this.errMess = <any>errmess;
-      }
-    })
+  onProAdd(pro: unknown) {
+    if (this.pros.every((p) => { return p._id != (pro as Product)._id; })) {
+      this.proService.addProduct(pro as Product).subscribe({
+        next: () => {
+          location.reload();
+        },
+        error: (errmess) => {
+          this.errMess = <any>errmess;
+        }
+      });
+    } else {
+      this.proService.editProduct((pro as Product)._id as string, pro as Product).subscribe({
+        next: () => {
+          location.reload();
+        },
+        error: (errmess) => {
+          this.errMess = <any>errmess;
+        }
+      });
+    }
+  }
+
+  onTableClick(ind: number) {
+    this.ind = ind;
   }
 }

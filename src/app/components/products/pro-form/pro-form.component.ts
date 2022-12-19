@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Product } from '../../../models/product';
 
 @Component({
@@ -7,14 +7,10 @@ import { Product } from '../../../models/product';
   styleUrls: ['./pro-form.component.css']
 })
 export class ProFormComponent {
-  @Output() proem: EventEmitter<Product> = new EventEmitter();
-  pro: Product = {
-    name: '',
-    colorOfEmptyCone: '',
-    wightOfEmptyCone: 0.0
-  };
-
+  @Input() pro!: Product;
+  @Output() emmiter: EventEmitter<Product> = new EventEmitter();
+  
   onSubmit(): void {
-    this.proem.emit(this.pro);
+    this.emmiter.emit(this.pro as Product);
   }
 }
