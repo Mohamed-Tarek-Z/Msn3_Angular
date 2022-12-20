@@ -3,13 +3,10 @@
     height: auto;
     display: flex;
     align-items: center;
-    background-color: var(--divider-color);
-    color: black;
     font-weight: 600;
 }
 
 a,
-a:visited,
 a:hover {
     color: #333;
     text-decoration: none;
