@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../models/product';
+import { Bag } from '../../models/bag';
+import { ProductService } from '../../services/product.service';
+import { BagService } from '../../services/bag.service';
 
 @Component({
   selector: 'app-wzn',
@@ -6,8 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wzn.component.css']
 })
 export class WznComponent implements OnInit {
-
-  constructor() { }
+  errMess!: string;
+  bags!: Bag[];
+  pros!: Product[];
+  constructor(private proService: ProductService, private bagService: BagService) { }
 
   ngOnInit(): void {
   }

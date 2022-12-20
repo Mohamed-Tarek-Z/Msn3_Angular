@@ -31,11 +31,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { WznTableComponent } from './components/wzn/wzn-table/wzn-table.component';
+import { WznFormComponent } from './components/wzn/wzn-form/wzn-form.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { RegistrationPageComponent } from './components/registration-page/regist
     ProTableComponent,
     ProFormComponent,
     LoginPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    WznTableComponent,
+    WznFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { RegistrationPageComponent } from './components/registration-page/regist
     MatProgressSpinnerModule,
     MatTableModule,
     MatGridListModule,
+    MatIconModule,
 
     FormsModule,
 

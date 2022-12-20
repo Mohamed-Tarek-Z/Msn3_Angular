@@ -1,0 +1,36 @@
+<h2>إضافة صنف</h2>
+<form #addProForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <mat-form-field>
+            <input matInput placeholder="اسم الصنف" type="text" [(ngModel)]="pro.name" name="proname" #proname="ngModel"
+                required>
+            <mat-error *ngIf="proname.errors?.['required']">رجاء ادخال اسم الصنف</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field>
+            <input matInput placeholder="وزن الكونة" type="text" [(ngModel)]="pro.wightOfEmptyCone" name="conewight"
+                #conewight="ngModel" required>
+            <mat-error *ngIf="conewight.errors?.['required']">رجاء ادخال وزن الكونة</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field>
+            <input matInput placeholder="لون الكونة" type="text" [(ngModel)]="pro.colorOfEmptyCone" name="conecolor"
+                #conecolor="ngModel" required>
+            <mat-error *ngIf="conecolor.errors?.['required']">رجاء ادخال لون الكونة</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group form-buttons">
+        <button [disabled]="addProForm.invalid" type="submit" class="btn btn-primary">
+            {{pro._id?"Update":"Add"}}
+        </button>
+        <button [hidden]="!addProForm.dirty" [disabled]="!addProForm.dirty" type="reset"
+            (click)="onReset(); addProForm.resetForm() " class="btn btn-warning">
+            Reset
+        </button>
+        <button [hidden]="pro._id==undefined" type="button" (click)="onDelet()" class="btn btn-danger">
+            Delete
+        </button>
+    </div>
+</form>
