@@ -52,4 +52,15 @@ export class ProductsComponent implements OnInit {
   onTableClick(ind: number) {
     this.ind = ind;
   }
+
+  onDelet(id: string) {
+    this.proService.deletProduct(id).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (errmess) => {
+        this.errMess = <any>errmess;
+      }
+    });
+  }
 }

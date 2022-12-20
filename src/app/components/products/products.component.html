@@ -4,7 +4,7 @@
         <app-pro-table (emmiter)="onTableClick($event)" [pros]=" pros"></app-pro-table>
     </div>
     <div style="order: 2">
-        <app-pro-form (emmiter)="onProAdd($event)" [pro]="(ind > -1)? pros[ind] : {
+        <app-pro-form (IdEmmiter)="onDelet($event)" (emmiter)="onProAdd($event)" [pro]="(ind > -1)? pros[ind] : {
             name: '', wightOfEmptyCone: 0.0, colorOfEmptyCone: ''} "></app-pro-form>
     </div>
 </div>
