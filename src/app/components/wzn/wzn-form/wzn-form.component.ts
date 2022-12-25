@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Product } from '../../../models/product';
 import { Bag } from '../../../models/bag';
-import { BagService } from '../app/services/bag.service';
 
 @Component({
   selector: 'app-wzn-form',
@@ -9,6 +9,17 @@ import { BagService } from '../app/services/bag.service';
 })
 export class WznFormComponent {
   @Input() bag!: Bag;
+  @Input() type!: Product;
+  @Output() emmiter: EventEmitter<Bag> = new EventEmitter();
+  @Output() IdEmmiter: EventEmitter<string> = new EventEmitter();
+
+
+  defBag: Bag = {
+    type: this.type ,
+    ,
+    colorOfEmptyCone: ''
+  }
+
 
   onSubmit(): void {
     this.emmiter.emit(this.bag as Bag);

@@ -13,6 +13,7 @@ export class WznComponent implements OnInit {
   errMess!: string;
   bags!: Bag[];
   pros!: Product[];
+  pro!:Product;
   constructor(private proService: ProductService, private bagService: BagService) { }
 
   ngOnInit(): void {
