@@ -1,7 +1,7 @@
 <h1>الميزان</h1>
 <div class="wznpage">
     <div style="order: 1">
-        <!-- <app-wzn-table></app-wzn-table> -->
+        <app-wzn-table *ngIf="bags" (bagEmmiter)="onTableClick($event)" [bags]="bags"></app-wzn-table>
     </div>
     <div style="order: 2">
         <form>
@@ -9,7 +9,7 @@
                 <mat-label>الصنف</mat-label>
                 <input type="text" placeholder="الصنف" aria-label="text" matInput [formControl]="proControl"
                     [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onTypeSelect()">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option.name}}
                     </mat-option>
@@ -17,7 +17,8 @@
             </mat-form-field>
         </form>
         <div *ngIf="product">
-            <app-wzn-form [type]="product" [bag]="bag" (IdEmmiter)="onDelet($event)" (emmiter)="onBagAdd($event)"></app-wzn-form>
+            <app-wzn-form [type]="product" [bag]="bag" (IdEmmiter)="onDelet($event)"
+                (emmiter)="onBagAdd($event)"></app-wzn-form>
         </div>
         <div *ngIf="!product">
             <h2>plz select type</h2>

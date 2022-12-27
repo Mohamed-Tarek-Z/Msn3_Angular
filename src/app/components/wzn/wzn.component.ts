@@ -65,8 +65,16 @@ export class WznComponent implements OnInit {
     return pro && pro.name ? pro.name : '';
   }
 
-  onTypeSelect(){
-    
+  onTypeSelect() {
+    this.product = this.proControl.value as Product;
+    this.bagService.getBags(this.product._id as string).subscribe({
+      next: (bags) => {
+        this.bags = bags;
+      },
+      error: (errmess) => {
+        this.errMess = <any>errmess;
+      }
+    });
   }
 
   onBagAdd(bag: unknown) {
