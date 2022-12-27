@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
 
 @Component({
@@ -6,16 +6,22 @@ import { Product } from '../../../models/product';
   templateUrl: './pro-form.component.html',
   styleUrls: ['./pro-form.component.css']
 })
-export class ProFormComponent {
+export class ProFormComponent implements OnInit {
   @Input() pro!: Product;
   @Output() emmiter: EventEmitter<Product> = new EventEmitter();
   @Output() IdEmmiter: EventEmitter<string> = new EventEmitter();
 
-  defPro: Product = {
-    name: '',
-    wightOfEmptyCone: 0.0,
-    colorOfEmptyCone: ''
+
+  ngOnInit(): void {
+    if (!this.pro) {
+      this.pro = {
+        name: '',
+        wightOfEmptyCone: 0.0,
+        colorOfEmptyCone: ''
+      };
+    }
   }
+
   onSubmit(): void {
     this.emmiter.emit(this.pro as Product);
   }
@@ -25,6 +31,10 @@ export class ProFormComponent {
   }
 
   onReset(): void {
-    this.pro = this.defPro;
+    this.pro = {
+      name: '',
+      wightOfEmptyCone: 0.0,
+      colorOfEmptyCone: ''
+    };
   }
 }

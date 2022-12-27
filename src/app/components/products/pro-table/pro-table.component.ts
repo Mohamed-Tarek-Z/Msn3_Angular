@@ -7,10 +7,10 @@ import { Product } from '../../../models/product';
 })
 export class ProTableComponent {
   @Input() pros!: Product[];
-  @Output() emmiter: EventEmitter<number> = new EventEmitter();
+  @Output() emmiter: EventEmitter<Product> = new EventEmitter();
   displayedColumns: string[] = ['Num', 'Name', 'Weight', 'Color'];
 
   onClick(row: Product): void {
-    this.emmiter.emit(this.pros.indexOf(row));
+    this.emmiter.emit(this.pros[this.pros.indexOf(row)]);
   }
 }

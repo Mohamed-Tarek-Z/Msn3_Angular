@@ -10,5 +10,5 @@ export interface Bag {
     netWight: number;
     marked: boolean;
     box: boolean;
-    retrivedFromOrder: boolean;
+    retrivedFromOrder?: boolean;
 }

@@ -26,9 +26,9 @@ export class BagService {
 
   addBag(bag: Bag) {
     if (!this.auth.isLoggedIn()) {
-      return null;
+      return null!;
     }
-    return this.http.post(`${BaseURL}bags`, bag)
+    return this.http.post<Bag>(`${BaseURL}bags`, bag)
       .pipe(catchError(error => this.processHTTPService.handleError(error)));
   }
 

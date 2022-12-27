@@ -9,26 +9,25 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  pros!: Product[];
+  products!: Product[];
+  product!: Product;
   errMess!: string;
-  ind!: number;
 
   constructor(private proService: ProductService) { }
 
   ngOnInit(): void {
     this.proService.getProducts().subscribe({
       next: (pros) => {
-        this.pros = pros;
+        this.products = pros;
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
       }
     });
-    this.ind = -1;
   }
 
   onProAdd(pro: unknown) {
-    if (this.pros.every((p) => { return p._id != (pro as Product)._id; })) {
+    if (this.products.every((p) => { return p._id != (pro as Product)._id; })) {
       this.proService.addProduct(pro as Product).subscribe({
         next: () => {
           location.reload();
@@ -49,8 +48,8 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  onTableClick(ind: number) {
-    this.ind = ind;
+  onTableClick(pro: Product) {
+    this.product = pro;
   }
 
   onDelet(id: string) {

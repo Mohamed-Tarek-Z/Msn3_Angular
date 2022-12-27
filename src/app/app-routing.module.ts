@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: RegistrationPageComponent },
   { path: 'home', component: EmptyComponent },
-  { path: 'mizan', component: WznComponent },
+  { path: 'mizan', component: WznComponent, canActivate: [AuthGuard] },
   { path: 'stock', component: StockComponent, canActivate: [AuthGuard] },
   { path: 'ezn', component: EznComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
