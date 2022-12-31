@@ -1,0 +1,26 @@
+th.mat-sort-header-sorted {
+  color: red;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: darkgray;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: lightslategray;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  font-size: large;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
