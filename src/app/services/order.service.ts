@@ -16,11 +16,11 @@ export class OrderService {
     public auth: AuthService,
     private processHTTPService: ProcessHTTPService) { }
 
-  getOrders(): Observable<Order[]> {
+  getOrders(start: Date, end: Date): Observable<Order[]> {
     if (!this.auth.isLoggedIn()) {
       return null!;
     }
-    return this.http.get<Order[]>(`${BaseURL}orders`)
+    return this.http.get<Order[]>(`${BaseURL}orders/?start=${start}&end=${end}`)
       .pipe(catchError(error => this.processHTTPService.handleError(error)));
   }
 

@@ -9,4 +9,6 @@ export interface Order {
     bags: Bag[];
     wight: number;
     pallets: number[];
+    createdAt?: Date;
+    updatedAt?: Date;
 }

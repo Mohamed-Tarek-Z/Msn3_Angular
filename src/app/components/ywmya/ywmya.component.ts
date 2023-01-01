@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Order } from '../../models/order';
 import { OrderService } from '../../services/order.service';
@@ -19,7 +19,7 @@ import { MatTableDataSource } from '@angular/material/table';
     ]),
   ],
 })
-export class YwmyaComponent implements OnInit, AfterViewInit {
+export class YwmyaComponent implements AfterViewInit {
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -41,16 +41,19 @@ export class YwmyaComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  ngOnInit(): void {
-    this.orderService.getOrders().subscribe({
-      next: (orders) => {
-        this.orders = orders;
-        this.dataSource = new MatTableDataSource(this.orders);
-      },
-      error: (errmess) => {
-        this.errMess = <any>errmess;
-      }
-    });
+  onDatechange() {
+    if ((this.range.controls.start.value != null && this.range.controls.end.value != null) && (this.range.controls.start.value < this.range.controls.end.value)) {
+      console.log('valid');
+      this.orderService.getOrders(this.range.controls.start.value as Date, this.range.controls.end.value as Date).subscribe({
+        next: (orders) => {
+          this.orders = orders;
+          this.dataSource = new MatTableDataSource(this.orders);
+        },
+        error: (errmess) => {
+          this.errMess = <any>errmess;
+        }
+      });
+    }
   }
 
   onDelet() {

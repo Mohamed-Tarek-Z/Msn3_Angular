@@ -11,4 +11,6 @@ export interface Bag {
     marked: boolean;
     box: boolean;
     retrivedFromOrder?: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

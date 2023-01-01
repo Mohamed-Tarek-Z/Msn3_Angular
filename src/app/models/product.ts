@@ -3,4 +3,6 @@ export interface Product {
     name: string;
     wightOfEmptyCone: number;
     colorOfEmptyCone: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
