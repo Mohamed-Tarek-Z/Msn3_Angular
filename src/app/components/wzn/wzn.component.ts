@@ -80,6 +80,7 @@ export class WznComponent implements OnInit {
   }
 
   onBagAdd(bag: unknown) {
+    //to do check for count in pallet in client side 
     if (this.bags.every((p) => { return p._id != (bag as Bag)._id; })) {
       this.bagService.addBag(bag as Bag).subscribe({
         next: () => {

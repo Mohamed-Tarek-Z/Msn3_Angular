@@ -29,6 +29,7 @@ export class WznFormComponent implements OnInit, OnChanges {
   }
 
   onSubmit(): void {
+    
     this.emmiter.emit(this.bag as Bag);
     
   }
