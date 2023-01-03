@@ -1,7 +1,7 @@
 <h1>الميزان</h1>
 <div class="wznpage">
     <div style="order: 1">
-        <app-wzn-table *ngIf="bags" (bagEmmiter)="onTableClick($event)" [bags]="bags"></app-wzn-table>
+        <app-wzn-table *ngIf="product._id" (bagEmmiter)="onTableClick($event)" [bags]="bags"></app-wzn-table>
     </div>
     <div style="order: 2">
         <mat-form-field appearance="fill">
@@ -14,11 +14,11 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <div *ngIf="product">
+        <div *ngIf="product._id">
             <app-wzn-form [type]="product" [bag]="bag" (IdEmmiter)="onDelet($event)"
                 (emmiter)="onBagAdd($event)"></app-wzn-form>
         </div>
-        <div *ngIf="!product">
+        <div *ngIf="!product._id">
             <h2>plz select type</h2>
         </div>
     </div>

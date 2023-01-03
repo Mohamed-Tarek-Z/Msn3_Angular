@@ -1,5 +1,5 @@
 import { Product } from './product';
-export interface Bag {
+export class Bag {
     _id?: string;
     type: Product;
     lot: string;
@@ -13,4 +13,16 @@ export interface Bag {
     retrivedFromOrder?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
+
+    constructor(pro: Product) {
+        this.type = pro;
+        this.lot = '';
+        this.pallet = 1;
+        this.numberOfCones = 1;
+        this.wightOfEmptyBag = 1;
+        this.totalWight = 1;
+        this.netWight = 1;
+        this.marked = false;
+        this.box = false;
+    }
 }

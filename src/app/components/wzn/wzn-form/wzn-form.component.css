@@ -3,3 +3,17 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+mat-form-field {
+    margin: 5px;
+}
+
+h2 {
+    margin-left: 50%;
+    margin-bottom: 5%;
+}
+
+.ceck{
+    font-size: larger;
+    color: black;
+}

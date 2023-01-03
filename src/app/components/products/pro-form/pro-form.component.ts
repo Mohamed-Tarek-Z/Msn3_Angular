@@ -14,11 +14,7 @@ export class ProFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.pro) {
-      this.pro = {
-        name: '',
-        wightOfEmptyCone: 0.0,
-        colorOfEmptyCone: ''
-      };
+      this.pro = new Product();
     }
   }
 
@@ -31,10 +27,6 @@ export class ProFormComponent implements OnInit {
   }
 
   onReset(): void {
-    this.pro = {
-      name: '',
-      wightOfEmptyCone: 0.0,
-      colorOfEmptyCone: ''
-    };
+    this.pro = new Product();
   }
 }

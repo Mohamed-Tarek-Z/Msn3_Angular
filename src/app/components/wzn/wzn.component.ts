@@ -28,6 +28,7 @@ export class WznComponent implements OnInit {
   constructor(private proService: ProductService, private bagService: BagService) { }
 
   ngOnInit(): void {
+    this.product = new Product();
     this.proService.getProducts().subscribe({
       next: (pros) => {
         this.products = pros;
@@ -44,7 +45,7 @@ export class WznComponent implements OnInit {
       }
     });
 
-    if (this.product != null) {
+    if (this.product._id != null) {
       this.bagService.getBags(this.product._id as string).subscribe({
         next: (bags) => {
           this.bags = bags;
@@ -70,6 +71,7 @@ export class WznComponent implements OnInit {
     this.bagService.getBags(this.product._id as string).subscribe({
       next: (bags) => {
         this.bags = bags;
+
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
@@ -81,7 +83,15 @@ export class WznComponent implements OnInit {
     if (this.bags.every((p) => { return p._id != (bag as Bag)._id; })) {
       this.bagService.addBag(bag as Bag).subscribe({
         next: () => {
-          location.reload();
+          this.bagService.getBags(this.product._id as string).subscribe({
+            next: (bags) => {
+              this.bags = bags;
+              this.bag = new Bag(this.product);
+            },
+            error: (errmess) => {
+              this.errMess = <any>errmess;
+            }
+          });
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
@@ -90,7 +100,15 @@ export class WznComponent implements OnInit {
     } else {
       this.bagService.editBag((bag as Bag)._id as string, bag as Bag).subscribe({
         next: () => {
-          location.reload();
+          this.bagService.getBags(this.product._id as string).subscribe({
+            next: (bags) => {
+              this.bags = bags;
+              this.bag = new Bag(this.product);
+            },
+            error: (errmess) => {
+              this.errMess = <any>errmess;
+            }
+          });
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
@@ -99,6 +117,7 @@ export class WznComponent implements OnInit {
     }
   }
 
+
   onTableClick(bag: Bag) {
     this.bag = bag;
   }
@@ -106,7 +125,15 @@ export class WznComponent implements OnInit {
   onDelet(id: string) {
     this.bagService.deletBag(id).subscribe({
       next: () => {
-        location.reload();
+        this.bagService.getBags(this.product._id as string).subscribe({
+          next: (bags) => {
+            this.bags = bags;
+            this.bag = new Bag(this.product);
+          },
+          error: (errmess) => {
+            this.errMess = <any>errmess;
+          }
+        });
       },
       error: (errmess) => {
         this.errMess = <any>errmess;

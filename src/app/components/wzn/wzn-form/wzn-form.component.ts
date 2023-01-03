@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
 import { Bag } from '../../../models/bag';
 
@@ -7,35 +7,30 @@ import { Bag } from '../../../models/bag';
   templateUrl: './wzn-form.component.html',
   styleUrls: ['./wzn-form.component.css']
 })
-export class WznFormComponent implements OnInit {
-  errMess!: string
+export class WznFormComponent implements OnInit, OnChanges {
   @Input() bag!: Bag;
   @Input() type!: Product;
   @Output() emmiter: EventEmitter<Bag> = new EventEmitter();
   @Output() IdEmmiter: EventEmitter<string> = new EventEmitter();
 
-
   ngOnInit(): void {
-    if (!this.type) {
-      this.errMess = 'product emp';
-    }
     if (!this.bag) {
-      this.bag = {
-        type: this.type,
-        lot: '',
-        pallet: 0,
-        numberOfCones: 0,
-        wightOfEmptyBag: 0,
-        totalWight: 0,
-        netWight: 0,
-        marked: false,
-        box: false
-      };
+      this.bag = new Bag(this.type);
+    }
+  }
+
+  ngOnChanges(): void {
+    if (!this.bag) {
+      this.bag = new Bag(this.type);
+    }
+    if (this.type._id != (this.bag.type as unknown) as string) {
+      this.bag.type = this.type;
     }
   }
 
   onSubmit(): void {
     this.emmiter.emit(this.bag as Bag);
+    
   }
 
   onDelet(): void {
@@ -43,16 +38,6 @@ export class WznFormComponent implements OnInit {
   }
 
   onReset(): void {
-    this.bag = {
-      type: this.type,
-      lot: '',
-      pallet: 0,
-      numberOfCones: 0,
-      wightOfEmptyBag: 0,
-      totalWight: 0,
-      netWight: 0,
-      marked: false,
-      box: false
-    };
+    this.bag = new Bag(this.type);
   }
 }

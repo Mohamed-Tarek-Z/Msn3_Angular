@@ -1,5 +1,5 @@
-<h2>ميزان</h2>
-<form *ngIf="!errMess" #addBagForm="ngForm" (ngSubmit)="onSubmit()">
+<h2 class="center">ميزان</h2>
+<form *ngIf="type._id" #addBagForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <mat-form-field>
             <mat-label>لوط</mat-label>
@@ -7,8 +7,6 @@
                 required>
             <mat-error *ngIf="baglot.errors?.['required']">رجاء ادخال لوط</mat-error>
         </mat-form-field>
-    </div>
-    <div class="form-group">
         <mat-form-field>
             <mat-label>رقم البالتة</mat-label>
             <input matInput placeholder="رقم البالتة" type="text" [(ngModel)]="bag.pallet" name="palletnumber"
@@ -17,8 +15,10 @@
         </mat-form-field>
     </div>
 
-    <mat-checkbox [(ngModel)]="bag.marked" name="marked">تعليم البالتة</mat-checkbox>
-    <mat-checkbox [(ngModel)]="bag.box" name ="box">صندوق</mat-checkbox>
+    <div class="form-group">
+        <mat-checkbox color="warn" [(ngModel)]="bag.marked" name="marked"><span class="ceck"> تعليم البالتة </span></mat-checkbox>
+        <mat-checkbox color="warn" [(ngModel)]="bag.box" name="box"><span class="ceck">صندوق</span> </mat-checkbox>
+    </div>
 
     <div class="form-group">
         <mat-form-field>
@@ -27,8 +27,6 @@
                 #connumber="ngModel" required>
             <mat-error *ngIf="connumber.errors?.['required']">رجاء ادخال عدد الكون</mat-error>
         </mat-form-field>
-    </div>
-    <div class="form-group">
         <mat-form-field>
             <mat-label>فارغ الشيكارة</mat-label>
             <input matInput placeholder="فارغ الشيكارة" type="text" [(ngModel)]="bag.wightOfEmptyBag" name="empbag"
@@ -43,8 +41,6 @@
                 #totwight="ngModel" required>
             <mat-error *ngIf="totwight.errors?.['required']">رجاء ادخال الوزن القائم</mat-error>
         </mat-form-field>
-    </div>
-    <div class="form-group">
         <mat-form-field>
             <mat-label>الوزن الصافي</mat-label>
             <input matInput placeholder="الوزن الصافي" type="text" [(ngModel)]="bag.netWight" name="netwght"
@@ -59,8 +55,6 @@
                 #conwght="ngModel" required>
             <mat-error *ngIf="conwght.errors?.['required']">رجاء ادخال وزن الكونة</mat-error>
         </mat-form-field>
-    </div>
-    <div class="form-group">
         <mat-form-field>
             <mat-label>لون الكونة</mat-label>
             <input matInput placeholder="لون الكونة" type="text" [(ngModel)]="type.colorOfEmptyCone" name="conclr"
@@ -73,7 +67,7 @@
             {{bag._id?"Update":"Add"}}
         </button>
         <button [hidden]="!addBagForm.dirty" [disabled]="!addBagForm.dirty" type="reset"
-            (click)="onReset(); addBagForm.resetForm() " class="btn btn-warning">
+            (click)="addBagForm.resetForm(); onReset(); " class="btn btn-warning">
             Reset
         </button>
         <button [hidden]="bag._id==undefined" type="button" (click)="onDelet()" class="btn btn-danger">
@@ -81,8 +75,3 @@
         </button>
     </div>
 </form>
-
-<div *ngIf="errMess">
-    <h2>Error</h2>
-    <h4>{{errMess}}</h4>
-</div>
