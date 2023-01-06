@@ -22,12 +22,9 @@ export class LogInComponent implements OnInit {
         next: (res) => {
           if (res.success) {
             this.dialogRef.close(res.success);
-          } else {
-            console.log(res);
           }
         },
         error: (error) => {
-          console.log(error);
           this.errMess = error;
         }
       });
