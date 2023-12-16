@@ -1,8 +1,9 @@
 import { Product } from './product';
 import { Bag } from './bag';
+import { Client } from './client';
 export class Order {
     _id?: string;
-    clientName: string;
+    client: Client;
     type: Product;
     lot: string;
     bagsNumber: number;
@@ -14,7 +15,7 @@ export class Order {
 
     constructor() {
         this.type = new Product();
-        this.clientName = '';
+        this.client = new Client();
         this.lot = '';
         this.bagsNumber = 0;
         this.wight = 0;
