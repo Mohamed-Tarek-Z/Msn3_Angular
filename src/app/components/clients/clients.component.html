@@ -1,0 +1,14 @@
+<h1>العملاء</h1>
+<div class="clipage">
+    <div style="order: 1">
+        <app-cli-table (emmiter)="onTableClick($event)" [clis]="clients"></app-cli-table>
+    </div>
+    <div style="order: 2">
+        <app-cli-form (IdEmmiter)="onDelet($event)" (emmiter)="onCliAdd($event)" [cli]="client"></app-cli-form>
+    </div>
+</div>
+
+<div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+</div>

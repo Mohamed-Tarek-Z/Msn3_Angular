@@ -7,6 +7,8 @@
         الرصيد</a>
     <a mat-button routerLink='/ywmya' routerLinkActive='active'><i class="fa fa-calendar fa-lg"></i>
         اليومية</a>
+    <a mat-button routerLink='/clients' routerLinkActive='active'><i class="fa fa-calendar fa-lg"></i>
+        العملاء</a>
     <span class='flex-spacer'></span>
     <a *ngIf="!username" mat-button (click)="openLoginForm()"><i class="fa fa-sign-in fa-lg"></i> تسجيل الدخول</a>
     <a *ngIf="username" mat-button ><i class="fa fa-user fa-lg"></i> {{username}}</a>

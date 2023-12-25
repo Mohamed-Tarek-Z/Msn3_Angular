@@ -42,6 +42,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClientsComponent } from './components/clients/clients.component';
+import { CliFormComponent } from './components/clients/cli-form/cli-form.component';
+import { CliTableComponent } from './components/clients/cli-table/cli-table.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginPageComponent,
     RegistrationPageComponent,
     WznTableComponent,
-    WznFormComponent
+    WznFormComponent,
+    ClientsComponent,
+    CliFormComponent,
+    CliTableComponent
   ],
   imports: [
     BrowserModule,

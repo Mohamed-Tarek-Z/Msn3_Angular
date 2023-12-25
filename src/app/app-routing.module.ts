@@ -9,6 +9,7 @@ import { EznComponent } from './components/ezn/ezn.component';
 import { ProductsComponent } from './components/products/products.component';
 import { StockComponent } from './components/stock/stock.component';
 import { YwmyaComponent } from './components/ywmya/ywmya.component';
+import { ClientsComponent } from './components/clients/clients.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'stock', component: StockComponent, canActivate: [AuthGuard] },
   { path: 'ezn', component: EznComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
-  { path: 'ywmya', component: YwmyaComponent, canActivate: [AuthGuard] }
+  { path: 'ywmya', component: YwmyaComponent, canActivate: [AuthGuard] },
+  { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

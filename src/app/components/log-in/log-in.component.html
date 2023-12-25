@@ -13,11 +13,11 @@
     <mat-dialog-content>
         <p>
             <mat-form-field>
-                <input matInput placeholder="username" type="text" [(ngModel)]="user.username" name="usename" #username="ngModel" required>
+                <input matInput placeholder="username" type="text" [(ngModel)]="user.username" name="usename" autocomplete="username" #username="ngModel" required>
                 <mat-error *ngIf="username.errors?.['required']">Username is required</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+                <input matInput placeholder="password" type="password" [(ngModel)]="user.password" autocomplete="current-password" name="password" #password="ngModel" required>
                 <mat-error *ngIf="password.errors?.['required']">Password is required</mat-error>
             </mat-form-field>
             <mat-checkbox [(ngModel)]="user.remember" name="remember">Remember Me</mat-checkbox>
