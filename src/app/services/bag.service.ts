@@ -16,6 +16,14 @@ export class BagService {
     public auth: AuthService,
     private processHTTPService: ProcessHTTPService) { }
 
+  getStock(): Observable<Bag[]> {
+    if (!this.auth.isLoggedIn()) {
+      return null!;
+    }
+    return this.http.get<Bag[]>(`${BaseURL}bags/stock`)
+      .pipe(catchError(error => this.processHTTPService.handleError(error)));
+  }
+
   getBags(proid: string): Observable<Bag[]> {
     if (!this.auth.isLoggedIn()) {
       return null!;

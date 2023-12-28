@@ -1,1 +1,26 @@
-<p>stock works!</p>
+<table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> الصنف </th>
+        <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Lot">
+        <th mat-header-cell *matHeaderCellDef> لوط </th>
+        <td mat-cell *matCellDef="let element"> {{element.lot}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="TotWeight">
+        <th mat-header-cell *matHeaderCellDef> المجموع </th>
+        <td mat-cell *matCellDef="let element"> {{element.wight}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+</table>
+
+
+
+<div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+</div>
