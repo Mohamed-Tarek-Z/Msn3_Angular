@@ -21,6 +21,7 @@ export class ClientsComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }
@@ -33,6 +34,7 @@ export class ClientsComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+alert(this.errMess);
         }
       });
     } else {
@@ -42,6 +44,7 @@ export class ClientsComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+alert(this.errMess);
         }
       });
     }
@@ -58,6 +61,7 @@ export class ClientsComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }

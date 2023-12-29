@@ -42,6 +42,7 @@ export class WznComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+        alert(this.errMess);
       }
     });
 
@@ -52,6 +53,7 @@ export class WznComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+          alert(this.errMess);
         }
       });
     }
@@ -76,6 +78,7 @@ export class WznComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+        alert(this.errMess);
       }
     });
   }
@@ -92,11 +95,13 @@ export class WznComponent implements OnInit {
             },
             error: (errmess) => {
               this.errMess = <any>errmess;
+              alert(this.errMess);
             }
           });
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+          alert(this.errMess);
         }
       });
     } else {
@@ -109,11 +114,13 @@ export class WznComponent implements OnInit {
             },
             error: (errmess) => {
               this.errMess = <any>errmess;
+              alert(this.errMess);
             }
           });
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+          alert(this.errMess);
         }
       });
     }
@@ -134,11 +141,13 @@ export class WznComponent implements OnInit {
           },
           error: (errmess) => {
             this.errMess = <any>errmess;
+            alert(this.errMess);
           }
         });
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+        alert(this.errMess);
       }
     });
   }

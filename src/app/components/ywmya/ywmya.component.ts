@@ -58,6 +58,7 @@ export class YwmyaComponent implements AfterViewInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+alert(this.errMess);
         }
       });
     }
@@ -70,6 +71,7 @@ export class YwmyaComponent implements AfterViewInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }

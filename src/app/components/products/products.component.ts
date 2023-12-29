@@ -22,6 +22,7 @@ export class ProductsComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }
@@ -34,6 +35,7 @@ export class ProductsComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+alert(this.errMess);
         }
       });
     } else {
@@ -43,6 +45,7 @@ export class ProductsComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+alert(this.errMess);
         }
       });
     }
@@ -59,6 +62,7 @@ export class ProductsComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }

@@ -44,6 +44,7 @@ export class EznComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+        alert(this.errMess);
       }
     });
 
@@ -54,6 +55,7 @@ export class EznComponent implements OnInit {
         },
         error: (errmess) => {
           this.errMess = <any>errmess;
+          alert(this.errMess);
         }
       });
     }
@@ -77,6 +79,7 @@ export class EznComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+        alert(this.errMess);
       }
     });
   }

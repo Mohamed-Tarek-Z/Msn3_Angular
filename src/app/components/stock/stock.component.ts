@@ -25,6 +25,7 @@ export class StockComponent implements OnInit {
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
+alert(this.errMess);
       }
     });
   }
