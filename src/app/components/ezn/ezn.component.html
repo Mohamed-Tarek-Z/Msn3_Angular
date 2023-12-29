@@ -1,1 +1,25 @@
-<p>ezn works!</p>
+<h1>عمل أذن</h1>
+<div class="eznpage">
+    <mat-form-field appearance="fill">
+        <mat-label>الصنف</mat-label>
+        <input type="text" placeholder="الصنف" aria-label="text" matInput [formControl]="proControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onTypeSelect()">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>عدد الشيكائر /الوزن</mat-label>
+        <input matInput placeholder="عدد الشيكائر /الوزن" type="text" [(ngModel)]="count_wight" name="countWight" #countWight="ngModel"
+            required>
+        <mat-error *ngIf="countWight.errors?.['required']">عدد الشيكائر /الوزن</mat-error>
+    </mat-form-field>
+</div>
+
+
+<div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+</div>

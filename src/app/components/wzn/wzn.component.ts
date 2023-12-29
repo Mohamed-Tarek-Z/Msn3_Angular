@@ -62,6 +62,7 @@ export class WznComponent implements OnInit {
 
     return this.products.filter(option => option.name.toLowerCase().includes(filterValue));
   }
+  
   displayFn(pro: Product): string {
     return pro && pro.name ? pro.name : '';
   }
