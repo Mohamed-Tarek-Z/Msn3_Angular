@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 import { Bag } from '../../models/bag';
 import { BagService } from '../../services/bag.service';
 
@@ -13,7 +14,8 @@ export class StockComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['Name', 'Lot', 'TotWeight'];
+  displayedColumns: string[] = ['select', 'Name', 'Lot', 'TotWeight'];
+  selection = new SelectionModel<any>(true, []);
   errMess!: string;
 
   constructor(private bagService: BagService) { }
@@ -21,11 +23,11 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
     this.bagService.getStock().subscribe({
       next: (data) => {
-        this.dataSource.data = this.summarizeStockItems(data);
+        this.dataSource.data = this.addEditFlag(this.summarizeStockItems(data));
       },
       error: (errmess) => {
         this.errMess = <any>errmess;
-alert(this.errMess);
+        alert(this.errMess);
       }
     });
   }
@@ -51,7 +53,7 @@ alert(this.errMess);
     let summary: any[] = [];
     summaryMap.forEach((wight, key) => {
       let [itemName, lot] = key.split('-');
-      summary.push({ itemName, lot, wight });
+      summary.push({ itemName, lot, wight, editing: false });
     });
 
     return summary;
@@ -72,4 +74,35 @@ alert(this.errMess);
     return event.direction === 'asc' ? 1 : -1;
   }
 
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle(): void {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
+  }
+
+  // Enable editing for selected rows
+  editSelectedRows(): void {
+    this.selection.selected.forEach((row) => (row.editing = true));
+  }
+
+  // Save changes for edited rows
+  saveChanges(): void {
+    this.selection.selected.forEach((row) => (row.editing = false));
+    this.selection.clear();
+  }
+
+  // Add an 'editing' flag to each row for tracking edit mode
+  private addEditFlag(data: any[]): any[] {
+    return data.map((item) => ({ ...item, editing: false }));
+  }
+
+
+  // no edit needed just trying new style so data not really effected 
+  // if data need to be edited from here add edit logic to saveChanges function
 }
